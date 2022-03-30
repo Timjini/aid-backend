@@ -3,5 +3,5 @@
 #
 # Examples:
 #
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+requests = Request.create([{ address: 'Istanbul' }, { description: 'First Note of a request' }])
 #   Character.create(name: 'Luke', movie: movies.first)
