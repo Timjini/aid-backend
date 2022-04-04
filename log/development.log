@@ -26111,3 +26111,96 @@ Processing by Api::V1::MessagesController#show as JSON
 Completed 204 No Content in 34ms (ActiveRecord: 7.6ms | Allocations: 2492)
 
 
+Started GET "/api/v1/rooms/1/messages/1" for ::1 at 2022-04-04 16:14:46 +0300
+Processing by Api::V1::MessagesController#show as JSON
+  Parameters: {"room_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "pirate@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/base_controller.rb:33:in `authenticate_user_using_x_auth_token'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/base_controller.rb:36:in `authenticate_user_using_x_auth_token'
+  [1m[36mUser Update (1.2ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 1161], ["current_sign_in_at", "2022-04-04 13:14:46.993258"], ["last_sign_in_at", "2022-04-04 13:09:18.290273"], ["updated_at", "2022-04-04 13:14:46.993736"], ["id", "4290e8b6-8fad-4f56-8d1d-194c05c39259"]]
+  ↳ app/controllers/api/v1/base_controller.rb:36:in `authenticate_user_using_x_auth_token'
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/base_controller.rb:36:in `authenticate_user_using_x_auth_token'
+Completed 204 No Content in 34ms (ActiveRecord: 14.2ms | Allocations: 4594)
+
+
+Started GET "/api/v1/rooms/1/messages/1" for ::1 at 2022-04-04 16:14:55 +0300
+Processing by Api::V1::MessagesController#show as JSON
+  Parameters: {"room_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "pirate@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/base_controller.rb:33:in `authenticate_user_using_x_auth_token'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/base_controller.rb:36:in `authenticate_user_using_x_auth_token'
+  [1m[36mUser Update (1.3ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 1162], ["current_sign_in_at", "2022-04-04 13:14:55.197960"], ["last_sign_in_at", "2022-04-04 13:14:46.993258"], ["updated_at", "2022-04-04 13:14:55.198333"], ["id", "4290e8b6-8fad-4f56-8d1d-194c05c39259"]]
+  ↳ app/controllers/api/v1/base_controller.rb:36:in `authenticate_user_using_x_auth_token'
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/base_controller.rb:36:in `authenticate_user_using_x_auth_token'
+Completed 204 No Content in 19ms (ActiveRecord: 6.8ms | Allocations: 2492)
+
+
+Started GET "/api/v1/rooms/1/messages/1" for ::1 at 2022-04-04 16:15:02 +0300
+Processing by Api::V1::MessagesController#show as JSON
+  Parameters: {"room_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "pirate@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/base_controller.rb:33:in `authenticate_user_using_x_auth_token'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/base_controller.rb:36:in `authenticate_user_using_x_auth_token'
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 1163], ["current_sign_in_at", "2022-04-04 13:15:02.848874"], ["last_sign_in_at", "2022-04-04 13:14:55.197960"], ["updated_at", "2022-04-04 13:15:02.849218"], ["id", "4290e8b6-8fad-4f56-8d1d-194c05c39259"]]
+  ↳ app/controllers/api/v1/base_controller.rb:36:in `authenticate_user_using_x_auth_token'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/base_controller.rb:36:in `authenticate_user_using_x_auth_token'
+Completed 204 No Content in 12ms (ActiveRecord: 2.5ms | Allocations: 2515)
+
+
+Started GET "/api/v1/rooms/1" for ::1 at 2022-04-04 16:15:02 +0300
+Processing by Api::V1::RoomsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "pirate@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/base_controller.rb:33:in `authenticate_user_using_x_auth_token'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/base_controller.rb:36:in `authenticate_user_using_x_auth_token'
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 1164], ["current_sign_in_at", "2022-04-04 13:15:02.885725"], ["last_sign_in_at", "2022-04-04 13:15:02.848874"], ["updated_at", "2022-04-04 13:15:02.886146"], ["id", "4290e8b6-8fad-4f56-8d1d-194c05c39259"]]
+  ↳ app/controllers/api/v1/base_controller.rb:36:in `authenticate_user_using_x_auth_token'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/base_controller.rb:36:in `authenticate_user_using_x_auth_token'
+  [1m[36mRoom Load (0.5ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/rooms_controller.rb:12:in `show'
+Completed 200 OK in 21ms (Views: 0.5ms | ActiveRecord: 2.8ms | Allocations: 3388)
+
+
+Started GET "/api/v1/rooms/1/messages/1" for ::1 at 2022-04-04 16:15:07 +0300
+Processing by Api::V1::MessagesController#show as JSON
+  Parameters: {"room_id"=>"1", "id"=>"1"}
+Started GET "/api/v1/rooms/1" for ::1 at 2022-04-04 16:15:07 +0300
+Processing by Api::V1::RoomsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "pirate@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/base_controller.rb:33:in `authenticate_user_using_x_auth_token'
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/base_controller.rb:36:in `authenticate_user_using_x_auth_token'
+  [1m[36mUser Update (1.4ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 1165], ["current_sign_in_at", "2022-04-04 13:15:07.627438"], ["last_sign_in_at", "2022-04-04 13:15:02.885725"], ["updated_at", "2022-04-04 13:15:07.627975"], ["id", "4290e8b6-8fad-4f56-8d1d-194c05c39259"]]
+  ↳ app/controllers/api/v1/base_controller.rb:36:in `authenticate_user_using_x_auth_token'
+  [1m[36mTRANSACTION (7.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/base_controller.rb:36:in `authenticate_user_using_x_auth_token'
+Completed 204 No Content in 36ms (ActiveRecord: 14.9ms | Allocations: 5213)
+
+
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "pirate@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/base_controller.rb:33:in `authenticate_user_using_x_auth_token'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/base_controller.rb:36:in `authenticate_user_using_x_auth_token'
+  [1m[36mUser Update (0.8ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 1166], ["current_sign_in_at", "2022-04-04 13:15:07.664749"], ["last_sign_in_at", "2022-04-04 13:15:07.627438"], ["updated_at", "2022-04-04 13:15:07.665258"], ["id", "4290e8b6-8fad-4f56-8d1d-194c05c39259"]]
+  ↳ app/controllers/api/v1/base_controller.rb:36:in `authenticate_user_using_x_auth_token'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/base_controller.rb:36:in `authenticate_user_using_x_auth_token'
+  [1m[36mRoom Load (0.8ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/rooms_controller.rb:12:in `show'
+Completed 200 OK in 55ms (Views: 0.4ms | ActiveRecord: 32.5ms | Allocations: 8124)
+
+
+Started DELETE "/api/v1/logout" for ::1 at 2022-04-04 16:25:09 +0300
+Processing by Api::V1::SessionsController#destroy as JSON
+Completed 204 No Content in 3ms (Allocations: 429)
+
+
