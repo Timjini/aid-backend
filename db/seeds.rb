@@ -3,5 +3,5 @@
 #
 # Examples:
 #
-requests = Request.create([{ address: 'Istanbul' }, { description: 'First Note of a request' }])
+# requests = Request.create([{ address: 'Istanbul' }, { description: 'First Note of a request' }])
 #   Character.create(name: 'Luke', movie: movies.first)
