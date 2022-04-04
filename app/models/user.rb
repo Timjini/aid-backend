@@ -14,6 +14,10 @@ class User < ApplicationRecord
   validates :first_name, :last_name, :email, presence: true
   validates :email, uniqueness: true
 
+  scope :all_except, ->(user) {where.not(id: user)}
+  after_create_commit { broadcast_append_to "users"}
+  has_many :messages
+
   def name
     [first_name, last_name].join(" ").strip
   end
