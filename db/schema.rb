@@ -10,11 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_01_141312) do
+ActiveRecord::Schema.define(version: 2022_04_05_081611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "asks", force: :cascade do |t|
+    t.string "description"
+    t.string "address"
+    t.float "longitude"
+    t.float "latitude"
+    t.uuid "user_id", null: false
+    t.string "fulfillment"
+    t.string "kind"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_asks_on_user_id"
+  end
 
   create_table "messages", force: :cascade do |t|
     t.uuid "user_id", null: false
@@ -24,20 +37,6 @@ ActiveRecord::Schema.define(version: 2022_04_01_141312) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["room_id"], name: "index_messages_on_room_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
-  end
-
-  create_table "requests", force: :cascade do |t|
-    t.string "description"
-    t.string "address"
-    t.float "longitude"
-    t.float "latitude"
-    t.integer "user_id"
-    t.string "fulfillment"
-    t.string "kind"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "username"
-    t.string "firstname"
   end
 
   create_table "rooms", force: :cascade do |t|
@@ -64,11 +63,11 @@ ActiveRecord::Schema.define(version: 2022_04_01_141312) do
     t.string "authentication_token"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "asks", "users"
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
 end

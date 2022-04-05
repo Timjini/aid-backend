@@ -1,11 +1,11 @@
-class CreateRequests < ActiveRecord::Migration[6.1]
+class CreateAsks < ActiveRecord::Migration[6.1]
   def change
-    create_table :requests do |t|
+    create_table :asks do |t|
       t.string :description
       t.string :address
       t.float :longitude
       t.float :latitude
-      t.integer :user_id
+      t.references :user, null: false, foreign_key: true , type: :uuid
       t.string :fulfillment
       t.string :kind
 

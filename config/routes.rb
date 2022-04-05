@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  #resources :asks
   devise_for :users, path_prefix: "devise", controllers: { registrations: "registrations" }
 
   namespace :api, defaults: { format: :json } do
@@ -12,7 +13,7 @@ Rails.application.routes.draw do
       resources :rooms do
         resources :messages
       end
-      resources :demands 
+      resources :asks 
       resources :users, only: [:show, :create, :update, :destroy], constraints: { id: /.*/ }
       resources :notes, only: [:index, :create] do
         collection do
