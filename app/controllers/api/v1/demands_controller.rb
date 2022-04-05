@@ -11,6 +11,7 @@ class Api::V1::DemandsController < Api::V1::BaseController
 
   # GET /requests/1
   def show
+    @demand = current_user.demands
     render json: @demand
   end
 
