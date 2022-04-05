@@ -1,4 +1,4 @@
-class Request < ApplicationRecord
+class Demand < ApplicationRecord
     belongs_to :user
 
     geocoded_by :address

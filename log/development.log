@@ -26725,3 +26725,38 @@ FOREIGN KEY ("room_id")
   [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(800087660423859570)[0m
   [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2022-04-05 10:32:26 +0300
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+Completed 200 OK in 9ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 2356)
+
+
+Started GET "/favicon.ico" for ::1 at 2022-04-05 10:32:27 +0300
+Processing by HomeController#index as */*
+  Parameters: {"path"=>"favicon"}
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 68)
+
+
+Started GET "/api/v1/demands" for ::1 at 2022-04-05 10:32:38 +0300
+  
+ActionController::RoutingError (uninitialized constant Api::V1::DemandsController
+Did you mean?  DeviseController):
+  
+Started GET "/favicon.ico" for ::1 at 2022-04-05 10:32:38 +0300
+Processing by HomeController#index as */*
+  Parameters: {"path"=>"favicon"}
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 95)
+
+
+Started GET "/api/v1/demands" for ::1 at 2022-04-05 10:33:11 +0300
+Processing by Api::V1::DemandsController#index as JSON
+Filter chain halted as :authenticate_user_using_x_auth_token rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 242)
+
+
+Started GET "/favicon.ico" for ::1 at 2022-04-05 10:33:13 +0300
+Processing by HomeController#index as */*
+  Parameters: {"path"=>"favicon"}
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 161)
+
+

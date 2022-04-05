@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       resources :rooms do
         resources :messages
       end
-      resources :requests 
+      resources :demands 
       resources :users, only: [:show, :create, :update, :destroy], constraints: { id: /.*/ }
       resources :notes, only: [:index, :create] do
         collection do
