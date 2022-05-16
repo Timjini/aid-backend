@@ -1,12 +1,12 @@
 class Api::V1::AsksController < Api::V1::BaseController
-  #before_action :set_request, only: [:show, :update, :destroy]
-  #before_action :load_request, only: [:show, :index, :delete]
+  before_action :authenticate_user!, only: [:show, :create, :index]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   # GET /requests
   def index
-    @ask = Ask.all
-    asks = current_user.asks
-    render json: asks
+    @ask = Ask.all.order(created_at: :asc)
+    # asks = current_user.asks
+    render json: @ask
   end
 
   # GET /requests/1
@@ -36,20 +36,14 @@ class Api::V1::AsksController < Api::V1::BaseController
 
   # DELETE /requests/1
   def destroy
-    @ask = Ask.find(params[:id])
     @ask.destroy
 
   end
-  # def bulk_delete
-  #   demands = Request.where(id: params[:ids], user: current_user)
-  #   if demands.empty?
-  #     render json: { error: "No users found with those IDs" }, status: 422
-  #   else
-  #     demands_count = demands.size
-  #     demands.destroy_all
-  #     render json: { notice: "#{demands_count} requests has been added deleted." }
-  #   end
-  # end
+
+  def correct_user
+    @ask = current_user.asks.find_by(id: params[:id])
+    redirect_to asks_path , notice: "Not Authorized to edit" if @ask.nil?
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -59,10 +53,11 @@ class Api::V1::AsksController < Api::V1::BaseController
 
     # Only allow a list of trusted parameters through.
     def ask_params
-      params.permit(:description, :address, :longitude, :latitude, :fulfillment, :kind)
+      params.permit(:description, :address, :longitude, :latitude, :fulfillment, :kind, :user_id)
     end
     
     def load_demand
       @ask = Ask.all
     end
+
 end

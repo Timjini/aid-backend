@@ -7,6 +7,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :trackable, :validatable, :rememberable
 
+
   has_many :notes, dependent: :delete_all
 
   before_save :ensure_authentication_token_is_present
@@ -15,7 +16,7 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
 
   scope :all_except, ->(user) {where.not(id: user)}
-  after_create_commit { broadcast_append_to "users"}
+  #after_create_commit { broadcast_append_to "users"}
   has_many :messages
 
   def name

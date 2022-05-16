@@ -19,4 +19,5 @@ class Room < ApplicationRecord
         end
         single_room
     end
+
 end

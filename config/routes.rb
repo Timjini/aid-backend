@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       resources :rooms do
         resources :messages
       end
+
       resources :asks 
       resources :users, only: [:show, :create, :update, :destroy], constraints: { id: /.*/ }
       resources :notes, only: [:index, :create] do
@@ -25,4 +26,7 @@ Rails.application.routes.draw do
 
   root "home#index"
   get '*path', to: 'home#index', via: :all
+
+  get 'user/:id', to: 'users#show', as: 'user'
+
 end

@@ -3,9 +3,10 @@ class Api::V1::RoomsController < Api::V1::BaseController
   def index
     @room = Room.new
     @rooms = Room.public_rooms
+    @message = Message.all
 
     @users = User.all_except(current_user)
-    render json: @rooms
+    render json: @users
   end
 
   def show
@@ -18,8 +19,7 @@ class Api::V1::RoomsController < Api::V1::BaseController
     @messages = @single_room.messages.order(created_at: :asc)
 
     @users = User.all_except(current_user)
-
-    render json: @single_room
+    render json: @messages
   end
   
   def create

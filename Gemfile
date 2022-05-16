@@ -4,10 +4,12 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.2'
 
 gem 'devise'
+#gem 'mailboxer'
+
 # gem 'devise-jwt'
 gem 'rack-cors'
 
-
+gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3'
 gem "pg"

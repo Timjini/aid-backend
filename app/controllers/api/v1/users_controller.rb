@@ -17,7 +17,8 @@ class Api::V1::UsersController < Api::V1::BaseController
   
     @message = Message.new
     @messages = @single_room.messages.order(created_at: :asc)
-    render json: @rooms
+    
+    render json: @users
 
     if @user
       render json: @user
