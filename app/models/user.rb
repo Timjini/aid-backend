@@ -22,9 +22,7 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
 
   # Assosiations
-  has_many :conversations
   has_many :tweets
-  has_many :messages, through: :conversations
   has_many :fulfillments
   #validates :fulfillments, length: {maximum: 1}
 
