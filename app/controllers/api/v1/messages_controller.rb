@@ -1,27 +1,27 @@
 class Api::V1::MessagesController < Api::V1::BaseController
   #before_action :authenticate_user!
   
-  def show
-    authorize @conversation
-    @messages = @conversation.messages.all
-  end
+  # def show
+  #   authorize @conversation
+  #   @messages = @conversation.messages.all
+  # end
   
-  def create
-    message = Message.new(message_params)
-    conversation = Conversation.find(message_params[:conversation_id])
-    if message.save
-      serialized_data = ActiveModelSerializers::Adapter::Json.new(
-        MessageSerializer.new(message)
-      ).serializable_hash
-      MessagesChannel.broadcast_to conversation, serialized_data
-      head :ok
-    end
-  end
+  # def create
+  #   message = Message.new(message_params)
+  #   conversation = Conversation.find(message_params[:conversation_id])
+  #   if message.save
+  #     serialized_data = ActiveModelSerializers::Adapter::Json.new(
+  #       MessageSerializer.new(message)
+  #     ).serializable_hash
+  #     MessagesChannel.broadcast_to conversation, serialized_data
+  #     head :ok
+  #   end
+  # end
   
-  private
+  # private
   
-  def message_params
-    params.require(:message).permit(:text, :conversation_id)
-  end
+  # def message_params
+  #   params.require(:message).permit(:text, :conversation_id)
+  # end
     
 end
