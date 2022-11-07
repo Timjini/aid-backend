@@ -4,5 +4,6 @@ class UserSerializer < ActiveModel::Serializer
 
     has_many :fulfillments
     has_many :requests
+    has_many :rooms
 
 end

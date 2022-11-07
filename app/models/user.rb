@@ -1,15 +1,7 @@
 class User < ApplicationRecord
 
   #Limitation of requests per day for a user
-  has_many :requests do
-    def today
-      where(:created_at => (Time.zone.now.beginning_of_day..Time.zone.now))
-    end
-
-    def this_week
-      where(:created_at => (Time.zone.now.beginning_of_week..Time.zone.now))
-    end
-  end
+  has_many :requests , dependent: :destroy
 
   #Devise modules
   devise :database_authenticatable, :registerable,
@@ -22,7 +14,7 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
 
   # Assosiations
-  has_many :tweets
+  has_many :tweets , through: :rooms
   has_many :fulfillments
   #validates :fulfillments, length: {maximum: 1}
 
