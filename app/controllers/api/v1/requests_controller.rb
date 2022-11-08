@@ -9,7 +9,7 @@ class Api::V1::RequestsController < Api::V1::BaseController
   end
 
   # GET /requests/1
-  def show
+  def show 
     @request = Request.find(params[:id])
     render json: @request
   end
@@ -27,7 +27,7 @@ class Api::V1::RequestsController < Api::V1::BaseController
 
   # PATCH/PUT /requests/1
   def update
-      user = current_user
+      @user = current_user
       @request = Request.find(params[:id])
       if @request.update(request_params)
         render json: @requests

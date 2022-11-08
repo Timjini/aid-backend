@@ -2,6 +2,7 @@ require "test_helper"
 
 class RequestsControllerTest < ActionDispatch::IntegrationTest
   setup do
+    sign_in users(:one)
     @request = requests(:one)
   end
 

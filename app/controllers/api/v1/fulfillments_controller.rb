@@ -3,6 +3,10 @@ class Api::V1::FulfillmentsController < Api::V1::BaseController
     #skip_before_action :authenticate_user_using_x_auth_token , only: [:create]
   
     # GET /fulfillments
+    # def index
+    #   @fulfillments = Fulfillment.all
+    #   render json: @fulfillments  
+    # end
     def index
       @fulfillments = Fulfillment.all
       render json: @fulfillments, include: [:user, :request] 
@@ -19,9 +23,10 @@ class Api::V1::FulfillmentsController < Api::V1::BaseController
       @fulfillment = current_user.fulfillments.create(text: fulfillment_params[:text])
       @fulfillment.request_id = fulfillment_params[:request_id]
       if @fulfillment.save
-        render :json => { :redirect => api_v1_fulfillments_url }
+        ActionCable.server.broadcast 'fulfillment_channel', @fulfillment
+      head :ok
       else
-        render json: @fulfillment.errors, status: :unprocessable_entity
+        head :ok
       end
     end
   

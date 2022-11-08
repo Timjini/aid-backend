@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  LIMIT = 2
 
   #Limitation of requests per day for a user
   has_many :requests , dependent: :destroy
@@ -18,7 +19,13 @@ class User < ApplicationRecord
   has_many :fulfillments
   #validates :fulfillments, length: {maximum: 1}
 
-
+  #limit the number of users that can fulfill a request
+  def limit_of_fulfillments
+    if self.fulfillments.count >= Fulfillment::LIMIT
+      errors.add(:base, "You can't fulfill this request")
+    end
+  end
+  
 
   def name
     [first_name, last_name].join(" ").strip
