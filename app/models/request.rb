@@ -2,7 +2,7 @@ class Request < ApplicationRecord
 
 
   belongs_to :user
-  has_many :fulfillments
+  has_many :fulfillments , dependent: :destroy
   #enums 
   enum kind: { onetime: 'One Time Help', financial: 'Financial Aid'}
 
