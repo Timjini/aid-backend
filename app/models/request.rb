@@ -14,11 +14,11 @@ class Request < ApplicationRecord
 
   enum situation: {pending: 'Pending', fulfilled: 'Fulfilled'}
 
-  geocoded_by :full_street_address
+  geocoded_by :address  # can also be an IP address
   reverse_geocoded_by :latitude, :longitude
+  after_validation :geocode, if: :will_save_change_to_address?
+  after_validation :reverse_geocode, if: :will_save_change_to_latitude? || :will_save_change_to_longitude?
 
-  after_validation :geocode 
-  # has_many :comments
 
   private 
   # def user_quota
