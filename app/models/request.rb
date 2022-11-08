@@ -15,6 +15,8 @@ class Request < ApplicationRecord
   enum situation: {pending: 'Pending', fulfilled: 'Fulfilled'}
 
   geocoded_by :full_street_address
+  reverse_geocoded_by :latitude, :longitude
+
   after_validation :geocode 
   # has_many :comments
 
