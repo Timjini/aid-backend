@@ -15,7 +15,6 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
 
   # Assosiations
-  has_many :tweets , through: :rooms
   has_many :fulfillments
   #validates :fulfillments, length: {maximum: 1}
 
