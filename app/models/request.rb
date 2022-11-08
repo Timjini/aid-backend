@@ -14,9 +14,8 @@ class Request < ApplicationRecord
 
   enum situation: {pending: 'Pending', fulfilled: 'Fulfilled'}
 
-  geocoded_by :address
-  after_validation :geocode, if: :address_changed?
-
+  geocoded_by :full_street_address
+  after_validation :geocode 
   # has_many :comments
 
   private 

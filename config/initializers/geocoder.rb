@@ -1,6 +1,6 @@
 Geocoder.configure(
   # Geocoding options
-   timeout: 15,                 # geocoding service timeout (secs)
+   timeout: 100000,                 # geocoding service timeout (secs)
    lookup: :google,         # name of geocoding service (symbol)
    api_key: 'AIzaSyD8_QKqZNpfYJQqelOONNrLoK7Jb4em2mM',  
    # ip_lookup: :ipinfo_io,      # name of IP address geocoding service (symbol)
