@@ -4,20 +4,20 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
       resource "*", headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head], credentials: true
     end
   
-    allow do
-      origins "https://auth-app-rails-back.herokuapp.com"
-      resource "*", headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head], credentials: true
-    end
+    # allow do
+    #   origins "https://aid--backend.herokuapp.com"
+    #   resource "*", headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head], credentials: true
+    # end
 
-    allow do
-      origins "https://hidden-eyrie-18402.herokuapp.com/"
-      resource "*", headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head], credentials: true
-    end
+    # allow do
+    #   origins "https://aid--backend.herokuapp.com"
+    #   resource "*", headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head], credentials: true
+    # end
     
     allow do
-      origins 'https://aid-app.netlify.app'
+      origins 'https://aid-app.netlify.ap'
   
-      resource '*',
+      resource 'https://aid--backend.herokuapp.com',
         headers: :any,
         methods: [:get, :post, :put, :patch, :delete, :options, :head]
     end
