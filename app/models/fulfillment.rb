@@ -1,5 +1,5 @@
 class Fulfillment < ApplicationRecord
-  LIMIT = 2
+  LIMIT = 5
 
   belongs_to :request
   belongs_to :user 

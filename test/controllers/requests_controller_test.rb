@@ -7,33 +7,24 @@ class RequestsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get requests_url, as: :json
-    assert_response :success
-  end
-
-  test "should create request" do
-    assert_difference('Request.count') do
-      post requests_url, params: { request: { address: @request.address, description: @request.description, fulfillment: @request.fulfillment, kind: @request.kind, latitude: @request.latitude, longitude: @request.longitude, situation: @request.situation, user_id: @request.user_id } }, as: :json
-    end
-
-    assert_response 201
-  end
-
-  test "should show request" do
-    get request_url(@request), as: :json
-    assert_response :success
-  end
-
-  test "should update request" do
-    patch request_url(@request), params: { request: { address: @request.address, description: @request.description, fulfillment: @request.fulfillment, kind: @request.kind, latitude: @request.latitude, longitude: @request.longitude, situation: @request.situation, user_id: @request.user_id } }, as: :json
+    get api_v1_requests_url
     assert_response 200
   end
 
-  test "should destroy request" do
-    assert_difference('Request.count', -1) do
-      delete request_url(@request), as: :json
+
+  test "should not create new if signed out" do
+    sign_out users(:one)
+    assert_no_difference('Request.count') do
+      post api_v1_requests_url, params: { request: { } }
     end
 
-    assert_response 204
+    assert_response 401
   end
+
+  test "should show request" do
+    sign_out users(:one)
+    get api_v1_request_url(@request)
+    assert_response :success
+  end
+
 end

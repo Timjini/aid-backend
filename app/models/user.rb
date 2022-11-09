@@ -12,18 +12,25 @@ class User < ApplicationRecord
 
   #validations 
   validates :first_name, :last_name, :username, :email, presence: true
-  validates :email, uniqueness: true
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP } 
 
   # Assosiations
   has_many :fulfillments
-  #validates :fulfillments, length: {maximum: 1}
 
-  #limit the number of users that can fulfill a request
-  def limit_of_fulfillments
-    if self.fulfillments.count >= Fulfillment::LIMIT
-      errors.add(:base, "You can't fulfill this request")
-    end
+  #maximum users that can fulfill a request
+  def max_users 
+    if self.users.count >= 2
+      errors.add(:base, "Exceeds weekly limit")
+    end 
   end
+
+  
+  #limit the number of users that can fulfill a request
+  # def limit_of_fulfillments
+  #   if self.fulfillments.count >= Fulfillment::LIMIT
+  #     errors.add(:base, "You can't fulfill this request")
+  #   end
+  # end
   
 
   def name

@@ -4,10 +4,24 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-jack: 
-email: "test@case.com"
+one: 
+  email: "test@gmail.com"
+  first_name: "test"
+  last_name: "test"
+  username: "test"
+  encrypted_password: "123456"
+  authentication_token: "123456"
+  role: "user"
+
 # column: value
-#
-user: 
-email: "user@case.com"
+two: 
+  email: "user@gmail.com"
+  first_name: "user"
+  last_name: "user"
+  username: "user"
+  encrypted_password: "123456"
+  authentication_token: "123456"
+  role: "admin"
+
+
 # column: value
