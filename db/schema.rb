@@ -15,6 +15,12 @@ ActiveRecord::Schema.define(version: 2022_11_29_171026) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "conversations", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "fulfillments", force: :cascade do |t|
     t.string "text"
     t.bigint "user_id", null: false
