@@ -20,13 +20,12 @@ class Api::V1::FulfillmentsController < Api::V1::BaseController
   
     # POST /fulfillments
     def create
-      @fulfillment = current_user.fulfillments.create(text: fulfillment_params[:text])
+      @fulfillment = current_user.fulfillments.create(fulfillment_params)
       @fulfillment.request_id = fulfillment_params[:request_id]
       if @fulfillment.save
-        ActionCable.server.broadcast 'fulfillment_channel', @fulfillment
-      head :ok
+        render json: @fulfillment, status: :created
       else
-        head :ok
+        render json: @fulfillment.errors, status: :unprocessable_entity, status: 422
       end
     end
   
@@ -55,7 +54,7 @@ class Api::V1::FulfillmentsController < Api::V1::BaseController
   
       # Only allow a list of trusted parameters through.
       def fulfillment_params
-        params.require(:fulfillment).permit(:text, :request_id, :user_id)
+        params.require(:fulfillment).permit(:request_id, :user_id)
       end 
   end
   

@@ -23,13 +23,9 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      resources :conversations 
-      resources :messages
       resources :requests 
       resources :fulfillments
-      resources :rooms do
-        resources :tweets
-      end
+      resources :messages
     end
   end
  

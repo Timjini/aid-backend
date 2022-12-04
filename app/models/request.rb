@@ -1,8 +1,7 @@
 class Request < ApplicationRecord
-
-
   belongs_to :user
   has_many :fulfillments , dependent: :destroy
+  has_many :messages, through: :fulfillments
   #enums 
   enum kind: { onetime: 'One Time Help', financial: 'Financial Aid'}
 
@@ -11,6 +10,7 @@ class Request < ApplicationRecord
 
   #User can only create 2 requests per day
   #validate :user_quota, :on => :create  
+  
 
   enum situation: {pending: 'Pending', fulfilled: 'Fulfilled'}
 

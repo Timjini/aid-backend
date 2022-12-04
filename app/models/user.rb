@@ -3,6 +3,8 @@ class User < ApplicationRecord
 
   #Limitation of requests per day for a user
   has_many :requests , dependent: :destroy
+  has_many :fulfillments, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
   #Devise modules
   devise :database_authenticatable, :registerable,

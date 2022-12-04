@@ -10,16 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_08_083707) do
+ActiveRecord::Schema.define(version: 2022_11_29_171026) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "conversations", force: :cascade do |t|
-    t.string "title"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
 
   create_table "fulfillments", force: :cascade do |t|
     t.string "text"
@@ -32,11 +26,13 @@ ActiveRecord::Schema.define(version: 2022_11_08_083707) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.string "text"
-    t.bigint "conversation_id", null: false
+    t.string "body"
+    t.bigint "user_id", null: false
+    t.bigint "fulfillment_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["fulfillment_id"], name: "index_messages_on_fulfillment_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "requests", force: :cascade do |t|
@@ -51,23 +47,6 @@ ActiveRecord::Schema.define(version: 2022_11_08_083707) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_requests_on_user_id"
-  end
-
-  create_table "rooms", force: :cascade do |t|
-    t.string "name"
-    t.boolean "is_private"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "tweets", force: :cascade do |t|
-    t.text "body"
-    t.bigint "user_id", null: false
-    t.bigint "room_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["room_id"], name: "index_tweets_on_room_id"
-    t.index ["user_id"], name: "index_tweets_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -94,8 +73,7 @@ ActiveRecord::Schema.define(version: 2022_11_08_083707) do
 
   add_foreign_key "fulfillments", "requests"
   add_foreign_key "fulfillments", "users"
-  add_foreign_key "messages", "conversations"
+  add_foreign_key "messages", "fulfillments"
+  add_foreign_key "messages", "users"
   add_foreign_key "requests", "users"
-  add_foreign_key "tweets", "rooms"
-  add_foreign_key "tweets", "users"
 end

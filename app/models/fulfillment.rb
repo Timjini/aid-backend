@@ -6,6 +6,5 @@ class Fulfillment < ApplicationRecord
 
   #limit the number of users that can fulfill a request
   # validate :limit_of_fulfillments, on: :create , if: :request = Fulfillment::LIMIT , message: "You can't fulfill this request"
-
-
+  has_many :messages, dependent: :destroy
 end

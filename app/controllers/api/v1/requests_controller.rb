@@ -4,7 +4,9 @@ class Api::V1::RequestsController < Api::V1::BaseController
 
   # GET /requests
   def index
-    @requests = Request.all.order(created_at: :desc)
+    # @requests = Request.near([current_user.latitude, current_user.longitude], 10)
+    # render json: @requests
+    @requests = Request.order(created_at: :desc)
     render json: @requests
   end
 
@@ -19,7 +21,7 @@ class Api::V1::RequestsController < Api::V1::BaseController
     @request = Request.new(request_params)
     @request.user = current_user
     if @request.save
-       render :json => { :redirect => api_v1_requests_url }
+      render json: @request, status: :created
     else
       render json: { error: @request.errors.full_messages.to_sentence }, status: 422
     end
@@ -30,7 +32,7 @@ class Api::V1::RequestsController < Api::V1::BaseController
       @user = current_user
       @request = Request.find(params[:id])
       if @request.update(request_params)
-        render json: @requests
+        render json: @request
       else
         render json: { error: @request.errors.full_messages.to_sentence }, status: 422
       end
@@ -50,6 +52,6 @@ class Api::V1::RequestsController < Api::V1::BaseController
 
     # Only allow a list of trusted parameters through.
     def request_params
-      params.permit(:description, :address, :longitude, :latitude, :kind,:fulfillment, :situation, :user_id, :fulfillment_id)
+      params.require(:request).permit(:description, :address, :longitude, :latitude,:fulfillment, :kind, :situation, :user_id, :fulfillment_id)
     end
 end
