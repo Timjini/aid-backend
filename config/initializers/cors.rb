@@ -1,9 +1,8 @@
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'https://aid-app.netlify.app/'
-    resource 'https://fierce-badlands-13020.herokuapp.com/',
+    origins 'https://aid-app.netlify.app'
+    resource '/api/*',
       headers: :any,
-      methods: [:get, :post, :put, :patch, :delete, :options, :head],
-      credentials: false
-  end
+      methods: [:get, :post, :put, :patch, :delete, :options, :head]
+    end
 end
