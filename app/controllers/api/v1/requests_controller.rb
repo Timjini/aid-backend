@@ -6,7 +6,8 @@ class Api::V1::RequestsController < Api::V1::BaseController
   def index
     # @requests = Request.near([current_user.latitude, current_user.longitude], 10)
     # render json: @requests
-    @requests = Request.order(created_at: :desc)
+    # index requests only within 2 minutes
+    @requests = Request.where("created_at >= ?", 2.minutes.ago)
     render json: @requests
   end
 
