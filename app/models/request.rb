@@ -10,6 +10,9 @@ class Request < ApplicationRecord
 
   #User can only create 2 requests per day
   #validate :user_quota, :on => :create  
+
+  #limit the number of fulfillments per request to 5
+  validate :fulfillment_quota, :on => :create
   
 
   enum situation: {pending: 'Pending', fulfilled: 'Fulfilled'}
@@ -28,5 +31,11 @@ class Request < ApplicationRecord
   #    errors.add(:base, "Exceeds weekly limit")
   #  end
   # end
+
+  def fulfillment_quota
+    if fulfillments.count >= 1
+      errors.add(:base, "Exceeds daily limit")
+    end
+  end
 
 end
