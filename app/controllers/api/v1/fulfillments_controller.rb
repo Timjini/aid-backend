@@ -20,15 +20,23 @@ class Api::V1::FulfillmentsController < Api::V1::BaseController
   
     # POST /fulfillments
     def create
-      @fulfillment = current_user.fulfillments.create(fulfillment_params)
-      @fulfillment.request_id = fulfillment_params[:request_id]
-      if @fulfillment.save
-        render json: @fulfillment, status: :created
+      #user can only fulfill a request once
+      user = current_user
+      request = Request.find(params[:request_id])
+      if user.has_fulfilled?(request)
+        render json: {error: "You have already fulfilled this request"}, status: :unprocessable_entity
       else
-        render json: @fulfillment.errors, status: :unprocessable_entity, status: 422
+        @fulfillment = Fulfillment.new(fulfillment_params)
+        @fulfillment.user = user
+        @fulfillment.request = request
+        if @fulfillment.save
+          render json: @fulfillment, status: :created
+        else
+          render json: @fulfillment.errors, status: :unprocessable_entity
+        end
       end
     end
-  
+
     # PATCH/PUT /fulfillments/1
     def update
         user = current_user

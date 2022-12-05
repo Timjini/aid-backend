@@ -5,16 +5,14 @@ class Api::V1::RequestsController < Api::V1::BaseController
   # GET /requests
   def index
     # @requests = Request.near([current_user.latitude, current_user.longitude], 10)
-    # render json: @requests
-    # index requests only within 2 minutes
-    @requests = Request.where("created_at >= ?", 24.minutes.ago)
+    @requests = Request.where("created_at >= ?", 24.hours.ago)
     render json: @requests
   end
 
   # GET /requests/1
   def show 
     @request = Request.find(params[:id])
-    render json: @request
+    render json: @request 
   end
 
   # POST /requests

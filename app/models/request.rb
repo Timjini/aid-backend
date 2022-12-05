@@ -1,21 +1,24 @@
 class Request < ApplicationRecord
+  Limit = 5
+
   belongs_to :user
-  has_many :fulfillments , dependent: :destroy
+  has_many :fulfillments , before_add: :validate_quota
   has_many :messages, through: :fulfillments
   #enums 
   enum kind: { onetime: 'One Time Help', financial: 'Financial Aid'}
+  enum situation: {pending: 'Pending', fulfilled: 'Fulfilled'}
 
+  #change sitation to fulfilled if fulfillments.size >= Limit
+  def situation
+    if fulfillments.size >= Limit
+      self.situation = 'Fulfilled'
+    end
+  end
+ 
+ 
   #validations 
   validates :description ,presence: true,length: {maximum: 300},on: :create, allow_nil: false
-
-  #User can only create 2 requests per day
-  #validate :user_quota, :on => :create  
-
-  #limit the number of fulfillments per request to 5
-  validate :fulfillment_quota, :on => :create
   
-
-  enum situation: {pending: 'Pending', fulfilled: 'Fulfilled'}
 
   geocoded_by :address  # can also be an IP address
   reverse_geocoded_by :latitude, :longitude
@@ -24,18 +27,8 @@ class Request < ApplicationRecord
 
 
   private 
-  # def user_quota
-  #  if user.requests.today.count >= 2
-  #    errors.add(:base, "Exceeds daily limit")
-  #  elsif user.requests.this_week.count >= 5
-  #    errors.add(:base, "Exceeds weekly limit")
-  #  end
-  # end
-
-  def fulfillment_quota
-    if fulfillments.count >= 1
-      errors.add(:base, "Exceeds daily limit")
-    end
+  def validate_quota
+    raise FulfillmentLimitExceeded if fulfillments.size >= Limit
   end
 
 end

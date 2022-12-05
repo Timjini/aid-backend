@@ -3,8 +3,14 @@ class User < ApplicationRecord
 
   #Limitation of requests per day for a user
   has_many :requests , dependent: :destroy
-  has_many :fulfillments, dependent: :destroy
   has_many :messages, dependent: :destroy
+  has_many :fulfillments, dependent: :destroy
+
+  #has one fulfillment per request
+  def has_fulfilled?(request)
+    fulfillments.where(request_id: request.id).any?
+  end
+
 
   #Devise modules
   devise :database_authenticatable, :registerable,
@@ -15,9 +21,8 @@ class User < ApplicationRecord
   #validations 
   validates :first_name, :last_name, :username, :email, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP } 
-
-  # Assosiations
-  has_many :fulfillments
+  validates :username, uniqueness: true
+  validates :email, uniqueness: true
 
   #maximum users that can fulfill a request
   def max_users 
