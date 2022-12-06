@@ -1,16 +1,14 @@
 class User < ApplicationRecord
-  LIMIT = 2
 
-  #Limitation of requests per day for a user
   has_many :requests , dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :fulfillments, dependent: :destroy
 
-  #has one fulfillment per request
-  def has_fulfilled?(request)
-    fulfillments.where(request_id: request.id).any?
+  # each user can fulfill one request at a time
+  def can_fulfill?(request)
+    fulfillments.where(request: request).empty?
   end
-
+  
 
   #Devise modules
   devise :database_authenticatable, :registerable,
@@ -24,20 +22,7 @@ class User < ApplicationRecord
   validates :username, uniqueness: true
   validates :email, uniqueness: true
 
-  #maximum users that can fulfill a request
-  def max_users 
-    if self.users.count >= 2
-      errors.add(:base, "Exceeds weekly limit")
-    end 
-  end
 
-  
-  #limit the number of users that can fulfill a request
-  # def limit_of_fulfillments
-  #   if self.fulfillments.count >= Fulfillment::LIMIT
-  #     errors.add(:base, "You can't fulfill this request")
-  #   end
-  # end
   
 
   def name

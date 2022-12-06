@@ -4,8 +4,10 @@ one:
   text: MyString
   user: one
   request: one
+  user_id: 1
 
 two:
   text: MyString
   user: two
   request: two
+  user_id: 2
