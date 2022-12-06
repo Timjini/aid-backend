@@ -1,5 +1,5 @@
 class Api::V1::RequestsController < Api::V1::BaseController
-  before_action :authenticate_user!, except: [:create, :index, :show]
+  before_action :authenticate_user!, except: [:create, :index, :show, :update]
   skip_before_action :authenticate_user_using_x_auth_token, only: [:show, :index]
 
   # GET /requests
@@ -24,17 +24,17 @@ class Api::V1::RequestsController < Api::V1::BaseController
       render json: { error: @request.errors.full_messages.to_sentence }, status: 422
     end
   end
-
-  # PATCH/PUT /requests/1
+  
   def update
-      @user = current_user
-      @request = Request.find(params[:id])
-      if @request.update(request_params)
-        render json: @request
-      else
-        render json: { error: @request.errors.full_messages.to_sentence }, status: 422
-      end
+    @request = Request.find(params[:id])
+    @request.user = current_user
+    if @request.update(request_params)
+      render json: @request
+    else
+      render json: { error: @request.errors.full_messages.to_sentence }, status: 422
+    end
   end
+
 
   # DELETE /requests/1
   def destroy
