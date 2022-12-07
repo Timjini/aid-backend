@@ -23,8 +23,16 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      resources :requests 
-      resources :fulfillments
+      resources :requests do
+        collection do
+          get :my_requests
+        end
+      end
+      resources :fulfillments do
+        collection do
+          get :my_fulfillments
+        end
+      end
       resources :messages
     end
   end

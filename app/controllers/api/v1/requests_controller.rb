@@ -1,10 +1,16 @@
 class Api::V1::RequestsController < Api::V1::BaseController
-  before_action :authenticate_user!, except: [:create, :index, :show, :update]
+  before_action :authenticate_user!, except: [:index, :show]
   skip_before_action :authenticate_user_using_x_auth_token, only: [:show, :index]
 
   # GET /requests
   def index
-    @requests = Request.all
+    @requests = Request.where(situation: 'pending')
+    render json: @requests
+  end
+
+  #index current user requests
+  def my_requests
+    @requests = current_user.requests
     render json: @requests
   end
 

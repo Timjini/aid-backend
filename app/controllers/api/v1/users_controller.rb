@@ -61,10 +61,10 @@ class Api::V1::UsersController < Api::V1::BaseController
   end
 
     def set_user
-      @user = User.find_by_id(params[:id])
+      @user = User.find_by_id(params[:id])  
     end
 
     def user_params
-      params.require(:user).permit(:id,:email, :first_name, :last_name, :password, :password_confirmation, :username)
+      params.require(:user).permit(:id,:email, :first_name, :last_name, :password, :password_confirmation, :username,:file)
     end
 end

@@ -1,9 +1,16 @@
 class Api::V1::FulfillmentsController < Api::V1::BaseController
-  #before_action :authenticate_user!
-  #skip_before_action :authenticate_user_using_x_auth_token , only: [:create]
+  before_action :authenticate_user!, except: [:index, :show]
+  skip_before_action :authenticate_user_using_x_auth_token ,  only: [:show, :index]
 
   def index
-    @fulfillments = Fulfillment.all
+    #index fulfillments for pending requests
+    @fulfillments = Fulfillment.where(request_id: params[:request_id])
+    render json: @fulfillments
+    
+  end
+
+  def my_fulfillments
+    @fulfillments = current_user.fulfillments
     render json: @fulfillments
   end
 

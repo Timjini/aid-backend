@@ -3,12 +3,7 @@ class User < ApplicationRecord
   has_many :requests , dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :fulfillments, dependent: :destroy
-
-  # each user can fulfill one request at a time
-  def can_fulfill?(request)
-    fulfillments.where(request: request).empty?
-  end
-  
+  has_one_attached :file
 
   #Devise modules
   devise :database_authenticatable, :registerable,
