@@ -18,7 +18,7 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
   private
 
     def sign_up_params
-      resource_params.permit(:email, :password, :password_confirmation, :first_name, :last_name, :avatar)
+      resource_params.permit(:email, :password, :password_confirmation, :first_name, :last_name, :file)
     end
 
     def account_update_params

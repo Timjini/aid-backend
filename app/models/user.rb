@@ -3,8 +3,8 @@ class User < ApplicationRecord
   has_many :requests , dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :fulfillments, dependent: :destroy
-  has_one_attached :file
-
+  has_many_attached :files
+  
   #Devise modules
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable

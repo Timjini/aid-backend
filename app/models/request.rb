@@ -28,7 +28,6 @@ class Request < ApplicationRecord
   validates :description, presence: true
   validates :address, presence: true
   validates :description ,presence: true,length: {maximum: 300},on: :create, allow_nil: false
-  
 
   geocoded_by :address  # can also be an IP address
   reverse_geocoded_by :latitude, :longitude
