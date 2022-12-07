@@ -12,7 +12,6 @@ one:
   encrypted_password: "123456"
   authentication_token: "123456"
   role: "user"
-  id: 1
 
 # column: value
 two: 
@@ -23,7 +22,5 @@ two:
   encrypted_password: "123456"
   authentication_token: "123456"
   role: "admin"
-  id: 2
 
 
-# column: value

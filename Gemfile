@@ -35,9 +35,10 @@ gem 'cable_ready'
 # gem 'rack-cors'
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'specs', '~> 0.20'
+  gem 'rspec-rails', '~> 6.0.0'
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing' 
+  gem 'pry-byebug'
 end
 
 group :development do

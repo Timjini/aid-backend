@@ -1,7 +1,10 @@
-require "test_helper"
+require 'test_helper'
 
-class MessageTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+class MessagesTest < ActiveSupport::TestCase
+    #message model validations
+    test "should not save message without body" do
+        message = Message.new
+        assert_not message.save, "Saved the message without a body"
+    end
+
 end

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       devise_scope :user do
+        get "all_users" => "users#index"
         get "users" => "users#show"
         post "users" => "users#create"
         post "login" => "sessions#create", as: "login"
@@ -17,7 +18,6 @@ Rails.application.routes.draw do
     end
   end
 
-  # resources :users, only: [:show, :create, :update, :destroy], constraints: { id: /.*/ }
 
   root "home#index"
 
