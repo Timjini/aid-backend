@@ -1,4 +1,4 @@
-class Api::V1::BikersController < Api::V1::ApplicationController
+class Api::V1::BikersController < Api::V1::BaseController
 
     def index 
         @bikers = Biker.all
