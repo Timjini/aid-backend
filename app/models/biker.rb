@@ -1,0 +1,2 @@
+class Biker < ApplicationRecord
+end

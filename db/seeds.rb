@@ -5,3 +5,27 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+bikers = Biker.create([
+    {first_name: "John", last_name: "Doe", city_of_origin: "New York", state_of_origin: "NY", latitude: 40.7128, longitude: -74.0060}
+])
+
+# {first_name: "Jane", last_name: "Doe", city_of_origin: "New York", state_of_origin: "NY", latitude: 40.7128, longitude: -74.0060},
+# {first_name: "John", last_name: "Smith", city_of_origin: "New York", state_of_origin: "NY", latitude: 40.7128, longitude: -74.0060},
+# {first_name: "Jane", last_name: "Smith", city_of_origin: "New York", state_of_origin: "NY", latitude: 40.7128, longitude: -74.0060},
+# {first_name: "John", last_name: "Doe", city_of_origin: "New York", state_of_origin: "NY", latitude: 40.7128, longitude: -74.0060},
+# {first_name: "Jane", last_name: "Doe", city_of_origin: "New York", state_of_origin: "NY", latitude: 40.7128, longitude: -74.0060},
+# {first_name: "John", last_name: "Smith", city_of_origin: "New York", state_of_origin: "NY", latitude: 40.7128, longitude: -74.0060},
+# {first_name: "Jane", last_name: "Smith", city_of_origin: "New York", state_of_origin: "NY", latitude: 40.7128, longitude: -74.0060},
+# {first_name: "John", last_name: "Doe", city_of_origin: "New York", state_of_origin: "NY", latitude: 40.7128, longitude: -74.0060},
+# {first_name: "Jane", last_name: "Doe", city_of_origin: "New York", state_of_origin: "NY", latitude: 40.7128, longitude: -74.0060},
+# {first_name: "John", last_name: "Smith", city_of_origin: "New York", state_of_origin: "NY", latitude: 40.7128, longitude: -74.0060},
+# {first_name: "Jane", last_name: "Smith", city_of_origin: "New York", state_of_origin: "NY", latitude: 40.7128, longitude: -74.0060},
+# {first_name: "John", last_name: "Doe", city_of_origin: "New York", state_of_origin: "NY", latitude: 40.7128, longitude: -74.0060},
+# {first_name: "Jane", last_name: "Doe", city_of_origin: "New York", state_of_origin: "NY", latitude: 40.7128, longitude: -74.0060},
+# {first_name: "John", last_name: "Smith", city_of_origin: "New York", state_of_origin: "NY", latitude: 40.7128, longitude: -74.0060},
+# {first_name: "Jane", last_name: "Smith", city_of_origin: "New York", state_of_origin: "NY", latitude: 40.7128, longitude: -74.0060},
+# {first_name: "John", last_name: "Doe", city_of_origin: "New York", state_of_origin: "NY", latitude: 40.7128, longitude: -74.0060},
+# {first_name: "Jane", last_name: "Doe", city_of_origin: "New York", state_of_origin: "NY", latitude: 40.7128, longitude: -74.0060},
+# {first_name: "John", last_name: "Smith", city_of_origin: "New York", state_of_origin: "NY", latitude: 40.7128, longitude: -74.0060},
+# {first_name: "Jane", last_name: "Smith", city_of_origin: "New York", state_of_origin: "NY", latitude: 40.7128, longitude: -74.0060},

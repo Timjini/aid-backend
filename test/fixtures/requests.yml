@@ -6,7 +6,7 @@ one:
   longitude: 1.5
   latitude: 1.5
   fulfillment: MyString
-  kind: MyString
+  kind: ["Pending", "Fulfilled", "archived"]
   situation: MyString
   user: one
   user_id: 1
@@ -18,7 +18,7 @@ two:
   longitude: 1.5
   latitude: 1.5
   fulfillment: MyString
-  kind: MyString
+  kind: ["Pending", "Fulfilled", "archived"]
   situation: MyString
   user: two
   user_id: 2
