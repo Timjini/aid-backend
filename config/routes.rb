@@ -35,6 +35,7 @@ Rails.application.routes.draw do
       end
       resources :messages
       resources :bikers
+      resources :contests
     end
   end
  
