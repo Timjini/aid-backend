@@ -1,10 +1,31 @@
 class Api::V1::RequestsController < Api::V1::BaseController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show ]
   skip_before_action :authenticate_user_using_x_auth_token, only: [:show, :index]
 
   # GET /requests
   def index
-    @requests = Request.where(situation: 'pending')
+    @requests = Request.all
+    render json: @requests
+  end
+
+  def fulfilled
+    @requests = Request.where(situation: 'fulfilled', user_id: current_user.id)
+    render json: @requests
+  end
+
+  def pending
+    pending_requests = Request.where(situation: 'pending' , user_id: current_user.id)
+
+    if !pending_requests.empty?
+      @requests = pending_requests
+    else
+      @requests = { message: "There are no pending requests at the moment"}
+    end
+    render json: @requests
+  end
+
+  def archived
+    @requests = Request.where(situation: 'archived' , user_id: current_user.id)
     render json: @requests
   end
 

@@ -8,19 +8,31 @@ class Request < ApplicationRecord
 
   #enums 
   enum kind: { onetime: 'One Time Help', financial: 'Financial Aid'}
-  enum situation: {pending: 'Pending',archived:'archived', fulfilled: 'Fulfilled'}
+  enum situation: {pending: 'pending',archived:'archived', fulfilled: 'fulfilled'}
 
   #update situation to fulfilled if there is a fulfillment
 
-  def situation
-    if updated_at < 24.hours.ago 
+  # def situation
+  #   if updated_at < 24.hours.ago 
+  #     update(situation: 'archived')
+  #     self.situation = 'archived'
+  #   elsif fulfillments.count >= Limit
+  #     update(situation: 'Fulfilled')
+  #     self.situation = 'Fulfilled'
+  #   else 
+  #     self.situation = 'Pending'
+  #   end
+  # end
+
+  def situation 
+    if updated_at < 1.minutes.ago
       update(situation: 'archived')
       self.situation = 'archived'
     elsif fulfillments.count >= Limit
-      update(situation: 'Fulfilled')
-      self.situation = 'Fulfilled'
-    else 
-      self.situation = 'Pending'
+      update(situation: 'fulfilled')
+      self.situation = 'fulfilled'
+    else
+      self.situation = 'pending'
     end
   end
 

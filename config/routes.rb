@@ -26,6 +26,9 @@ Rails.application.routes.draw do
       resources :requests do
         collection do
           get :my_requests
+          get :fulfilled
+          get :pending
+          get :archived
         end
       end
       resources :fulfillments do
