@@ -4,4 +4,6 @@ class ApplicationJob < ActiveJob::Base
 
   # Most jobs are safe to ignore if the underlying records are no longer available
   # discard_on ActiveJob::DeserializationError
+
+  # create a job for every request that is pending and has not been fulfilled
 end

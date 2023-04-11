@@ -1,6 +1,6 @@
 class Api::V1::RequestsController < Api::V1::BaseController
   before_action :authenticate_user!, except: [:index, :show]
-  skip_before_action :authenticate_user_using_x_auth_token, only: [:show, :index]
+  skip_before_action :authenticate_user_using_x_auth_token, only: [:show, :index,:my_requests]
 
   # GET /requests
   def index

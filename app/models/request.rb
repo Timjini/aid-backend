@@ -13,7 +13,7 @@ class Request < ApplicationRecord
   #update situation to fulfilled if there is a fulfillment
 
   def situation
-    if updated_at < 24.hours.ago 
+    if updated_at < 2.minutes.ago 
       update(situation: 'archived')
       self.situation = 'archived'
     elsif fulfillments.count >= Limit

@@ -25,10 +25,10 @@ gem 'image_processing', '~> 1.2'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'active_model_serializers', '~> 0.10.0'
-gem 'geocoder', '~> 1.3', '>= 1.3.7'
+# gem 'geocoder', '~> 1.3', '>= 1.3.7'
 gem 'cable_ready'
 gem 'faker'
-
+gem 'sidekiq'
 
 
 
